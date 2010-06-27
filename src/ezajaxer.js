@@ -24,23 +24,22 @@ THE SOFTWARE.
 */
 
 Ezajaxer = {
-	
-	/*
-	 * key value of marker data
-	 */
-	marker: 'ezajaxer-marker',
-	
-	/*
-	 * mark a DOM object as altered by this class so additional
-	 * event handlers are added to it
-	 * 
-	 * @param DOM element
-	 * @return element
-	 */
-	mark: function(element) { 
-		$(element).data(this.marker, true);
-		return element;
-	}
-	
-	
-};
+    
+    /*
+     * key value of marker data
+     */
+    marker: 'ezajaxer-marker',
+    
+    /*
+     * mark a DOM object as altered by this class so additional
+     * event handlers are added to it
+     * 
+     * @param DOM element
+     * @return element
+     */
+    mark: function(element) { 
+        $(element).data(this.marker, true);
+        return element;
+    }
+    
+}

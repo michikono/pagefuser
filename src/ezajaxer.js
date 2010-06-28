@@ -23,12 +23,13 @@ THE SOFTWARE.
 
 */
 
-Ezajaxer = {
+Ezajaxer = function() {
+    
     
     /*
      * key value of marker data
      */
-    marker: 'ezajaxer-marker',
+    this.marker = 'ezajaxer-marker';
     
     /*
      * mark a DOM object as altered by this class so additional
@@ -37,9 +38,21 @@ Ezajaxer = {
      * @param DOM element
      * @return element
      */
-    mark: function(element) { 
-        $(element).data(this.marker, true);
-        return element;
-    }
+    this.mark = function(element) { 
+        return $(element).data(this.marker, true);
+    };
     
-}
+    this.unmark = function(element) {
+        return $(element).data(this.marker, false);
+    };
+    
+    /*
+     * Tests if an element has been marked
+     *
+     * @param DOM element
+     * @return TRUE if has been marked
+     */
+    this.hasMarker = function(element) {
+        return $(element).data(this.marker) || false;
+    };
+};

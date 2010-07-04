@@ -23,8 +23,10 @@
             /*
              * build element specific options
              */
-            $this.data.ezajaxer = new Ezajaxer($.metadata ? $.extend({}, settings, $this.metadata()) : settings);
-            $this.data.ezajaxer.attach($this);
+            var ezajaxer = new Ezajaxer($.metadata ? $.extend({}, settings, $this.metadata()) : settings);
+            ezajaxer.attach($this);
+            
+//            console.log($(this).data());
             return $(this);
         });
     };    
@@ -54,15 +56,15 @@ var Ezajaxer = (function(userConfig) {
      * pass nothing in if null is provided
      */    
     })(userConfig || {});
-    
+
     /**
      * Attaches this instance of Ezajaxer to the element triggers all 
      * associated behavior on it (such as event handlers)
      */
     this.attach = function(element) {
-        
+        this.dom.mark(element);
     };
-     
+
     /** 
      * DOM manipulation functionality helper
      */

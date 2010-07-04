@@ -1,37 +1,48 @@
-function setUp() {
-    ezajaxer = new Ezajaxer();
-    stubElement = $('<div></div>');   
-}
-function tearDown() {
-    delete stubElement;
-    delete ezajaxer;
-}
+module("DOM", {
+    setup: function() {
+        stubElement = $('<div></div>');
+        ezajaxer = new Ezajaxer();
+    },
+    teardown: function() {
+        stubElement.unbind();
+        delete stubElement;
+        delete ezajaxer;
+    }
+});
 
-function testMark() {
-    assertEquals("Mark return type should be element", stubElement.tagName, ezajaxer.dom.mark(stubElement).tagName);
-    assertTrue("Testing marker added", ezajaxer.dom.hasMarker(stubElement));
-}
+test("no change to element after calling ezajaxer on a non-tagged element", function() {
+});
 
-function testMarkCusomMarker() {
+test("Testing marking of elements", function() {
+	expect(2);
+    equals(stubElement.outerHTML(), ezajaxer.dom.mark(stubElement).outerHTML(), "Element HTML should be the same");
+    ok(ezajaxer.dom.hasMarker(stubElement), "Testing marker added");
+});
+
+test("Testing marking of elements using custom marker", function() {
+    expect(3);
     var customMarker = 'custom-text';
     ezajaxer = new Ezajaxer({marker: customMarker});
-    assertEquals("Mark return type should be element", stubElement.tagName, ezajaxer.dom.mark(stubElement).tagName);
-    assertEquals("Marker should be " + customMarker, customMarker, ezajaxer.dom.getMarker(stubElement));
-    assertTrue("Testing marker added", ezajaxer.dom.hasMarker(stubElement));
-}
+    equals(stubElement.outerHTML(), ezajaxer.dom.mark(stubElement).outerHTML(), "Element HTML should be the same");
+    equals(customMarker, ezajaxer.dom.getMarker(stubElement), "Marker should be " + customMarker);
+    ok(ezajaxer.dom.hasMarker(stubElement), "Testing marker added");
+});
 
+test("Testing unmarking of elements", function() {
+    expect(3);
+    equals(stubElement.outerHTML(), ezajaxer.dom.mark(stubElement).outerHTML(), "Element HTML should be the same");
+    equals(stubElement.outerHTML(), ezajaxer.dom.unmark(stubElement).outerHTML(), "Unmark return should be same type");
+    ok(!ezajaxer.dom.hasMarker(stubElement), "Testing marker removed");
+});
 
-function testUnmark() {
-    assertEquals("Mark return type should be element", stubElement.tagName, ezajaxer.dom.mark(stubElement).tagName);
-    assertEquals("Unmark return should be element", stubElement.tagName, ezajaxer.dom.unmark(stubElement).tagName);
-    assertFalse("Testing marker removed", ezajaxer.dom.hasMarker(stubElement));
-}
-
-function testUnmarkCustomMarker() {
+test("Testing unmarking of elements using custom marker", function() {
+    expect(4);
     var customMarker = 'custom-text';
     ezajaxer = new Ezajaxer({marker: customMarker});
-    assertEquals("Mark return type should be element", stubElement.tagName, ezajaxer.dom.mark(stubElement).tagName);
-    assertEquals("Marker should be " + customMarker, customMarker, ezajaxer.dom.getMarker(stubElement));
-    assertEquals("Unmark return should be element", stubElement.tagName, ezajaxer.dom.unmark(stubElement).tagName);
-    assertFalse("Testing marker removed", ezajaxer.dom.hasMarker(stubElement));
-}
+    equals(stubElement.outerHTML(), ezajaxer.dom.mark(stubElement).outerHTML(), "Element HTML should be the same");
+    equals(customMarker, ezajaxer.dom.getMarker(stubElement), "Marker should be " + customMarker);
+    equals(stubElement.outerHTML(), ezajaxer.dom.unmark(stubElement).outerHTML(), "Unmark return should be same type");
+    ok(!ezajaxer.dom.hasMarker(stubElement), "Testing marker removed");
+});
+
+

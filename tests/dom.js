@@ -16,10 +16,13 @@ test("no change to element after calling ezajaxer on a non-tagged element", func
 });
 
 test("Testing marking of elements", function() {
-	expect(3);
+	expect(5);
     equals(stubElementForDom.outerHTML(), ezajaxer.dom.mark(stubElementForDom).outerHTML(), "Element HTML should be the same");
+    equals(ezajaxer.dom.getMarker(stubElementForDom), Ezajaxer.defaults.marker, "Marker should be the default");
     ok(ezajaxer.dom.hasMarker(stubElementForDom), "Testing marker added manually");
+
     stubElementForPlugin.ezajaxer();
+    equals(ezajaxer.dom.getMarker(stubElementForPlugin), Ezajaxer.defaults.marker, "Marker should be the default");
     ok(ezajaxer.dom.hasMarker(stubElementForPlugin), "Testing marker added via plugin");
 });
 

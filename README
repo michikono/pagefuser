@@ -1,7 +1,7 @@
-Ezajaxer is a framework built on jQuery to make embedding AJAX behavior simple. It departs from traditional AJAX development methods by focusing on speed and simplicity over pure JavaScript development. To deploy AJAX functionality using this framework, a developer would do the following:
+Pagefuser is a framework built on jQuery to make embedding AJAX behavior simple. It departs from traditional AJAX development methods by focusing on speed and simplicity over pure JavaScript development. To deploy AJAX functionality using this framework, a developer would do the following:
 
 1) Create the desired "AJAX" content using static HTML. For example, if the goal was to create a modal dialog window that lets you edit your profile, the edit profile page would be created using static HTML. Any secondary pages (change password, for example), would also be created using static HTML and regular links/form submissions.
 2) Link to the profile page that was just created using an <A> tag.
-3) Initialize the link using the provided framework methods (the simplest is applying the CSS class 'ezajaxer' to the element).
+3) Initialize the link using the provided framework methods (the simplest is applying the CSS class 'pagefuser' to the element).
 
 Now, when an end user clicks on the link, the content in the profile page will appear in a DIV via AJAX. All subsequent form submissions and links within that DIV will also use AJAX behavior.

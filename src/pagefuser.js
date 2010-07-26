@@ -5,15 +5,15 @@
 
 /*
  * jQuery plugin syntax
- * This will wrap the Ezajaxer class. By keeping the class separate, 
+ * This will wrap the Pagefuser class. By keeping the class separate, 
  * unit testing is simpler.
  */
 (function($) {
 	
     /**
-     * attaching ezajaxer as a plugin 
+     * attaching pagefuser as a plugin 
      */
-    $.fn.ezajaxer = function(settings) {
+    $.fn.pagefuser = function(settings) {
         
         /*
          * build main options before element iteration
@@ -23,8 +23,8 @@
             /*
              * build element specific options
              */
-            var ezajaxer = new Ezajaxer($.metadata ? $.extend({}, settings, $this.metadata()) : settings);
-            ezajaxer.attach($this);
+            var pagefuser = new Pagefuser($.metadata ? $.extend({}, settings, $this.metadata()) : settings);
+            pagefuser.attach($this);
             
             return $(this);
         });
@@ -38,15 +38,15 @@
  * @param   Configs
  *
  */
-var Ezajaxer = (function(config) {
+var Pagefuser = (function(config) {
     
     /** 
      * Stores configuration values -- either defaults or those provided in a constructor
      */
-    config = $.extend(Ezajaxer.defaults, config);
+    config = $.extend(Pagefuser.defaults, config);
     
     /**
-     * Attaches this instance of Ezajaxer to the element triggers all 
+     * Attaches this instance of Pagefuser to the element triggers all 
      * associated behavior on it (such as event handlers)
      *
      * Returns the number of elements converted
@@ -119,11 +119,11 @@ var Ezajaxer = (function(config) {
 /*
     * default settings for the plugin
     */
-Ezajaxer.defaults = {
+Pagefuser.defaults = {
     /**
      * key value of marker data
      */
-    marker: 'ezajaxer-marker',
+    marker: 'pagefuser-marker',
     
     /**
      * Targets that get the event handler attached to it. Accepts any valid selector from

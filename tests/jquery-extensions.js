@@ -1,8 +1,6 @@
 /*
  * used for testing
  */
-jQuery.fn.outerHTML = function(s) {
-    return (s)
-        ? this.before(s).remove()
-        : jQuery("<p>").append(this.eq(0).clone()).html();
+jQuery.fn.outerHTML = function() {
+    return $('<div>').append( this.eq(0).clone() ).html();
 };
